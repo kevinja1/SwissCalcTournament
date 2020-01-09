@@ -55,3 +55,8 @@ function newElement() {
         }
     }
 }
+
+function createTournament() {
+    
+
+}
