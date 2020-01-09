@@ -57,12 +57,11 @@ function newElement() {
 }
 
 username = "RedLamp3";
-apikey = '"5q3BnUgRfZZiRHVwufh40ysKU4xys1u3hYoM8AGT"';
+apikey = "5q3BnUgRfZZiRHVwufh40ysKU4xys1u3hYoM8AGT";
 
 function createTournament() {
     url = 'https://api.challonge.com/v1/tournaments.json';
     httpPostAsync(url, getResponse);
-
 
 }
 
@@ -71,7 +70,7 @@ function getResponse(responseText) {
 }
 
 function httpPostAsync(url, callback) {
-    
+
     data = {"api_key": apikey, "tournament": { "name": "BC1920", "tournament_type": "swiss", "game_name": "Calculus" }};
     var params = JSON.stringify(data);
     var xhr = new XMLHttpRequest();
@@ -83,5 +82,5 @@ function httpPostAsync(url, callback) {
             callback(JSON.parse(xhr.responseText));
         }
     };
-    
+
 }
