@@ -153,9 +153,9 @@ input {
 
 
 <ul id="myUL">
-  
+
 </ul>
-  <span onclick="newElement()" class="sbmtBtn">Submit</span>
+  <span onclick="saveNames()" class="sbmtBtn">Submit</span>
 <script>
 // Create a "close" button and append it to each list item
 var myNodelist = document.getElementsByTagName("LI");
@@ -212,6 +212,15 @@ function newElement() {
       var div = this.parentElement;
       div.style.display = "none";
     }
+  }
+}
+
+// Save the list into an array when clicking "Submit" button
+function saveNames() {
+  var x = document.getElementById("myUL");
+  var optionVal = new Array();
+  for (i = 0; i < x.length; i++) {
+    optionVal.push(x.options[i].text);
   }
 }
 </script>
