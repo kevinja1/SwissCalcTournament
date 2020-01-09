@@ -1,14 +1,12 @@
-import "API.js";
-
 // Create a "close" button and append it to each list item
-var myNodelist = document.getElementsByTagName("LI");
+var participants = document.getElementsByTagName("LI");
 var i;
-for (i = 0; i < myNodelist.length; i++) {
+for (i = 0; i < participants.length; i++) {
     var span = document.createElement("SPAN");
     var txt = document.createTextNode("\u00D7");
     span.className = "close";
     span.appendChild(txt);
-    myNodelist[i].appendChild(span);
+    participants[i].appendChild(span);
 }
 
 // Click on a close button to hide the current list item
@@ -58,7 +56,23 @@ function newElement() {
     }
 }
 
+
+
 function createTournament() {
+    url = 'https://' + username + ':' + apikey +'@api.challonge.com/v1/tournaments.json';
+    console.log(url);
 
+}
 
+function httpGetAsync(theUrl, callback)
+{
+    var xmlHttp = new XMLHttpRequest();
+    params = new Map([["name", "BC1920"], ["tournament_type", "swiss"], ["game_name", "Calculus"]]);
+    
+    xmlHttp.onreadystatechange = function() { 
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            callback(xmlHttp.responseText);
+    }
+    xmlHttp.open("POST", theUrl, true); // true for asynchronous 
+    xmlHttp.send(params);
 }
