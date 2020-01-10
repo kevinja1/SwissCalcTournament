@@ -1,3 +1,5 @@
+//import request from "modules/request";
+
 // Create a "close" button and append it to each list item
 var participants = document.getElementsByTagName("LI");
 var i;
@@ -57,13 +59,12 @@ function newElement() {
 }
 
 username = "RedLamp3";
-apikey = '"5q3BnUgRfZZiRHVwufh40ysKU4xys1u3hYoM8AGT"';
+apikey = "5q3BnUgRfZZiRHVwufh40ysKU4xys1u3hYoM8AGT";
 
 function createTournament() {
     url = 'https://api.challonge.com/v1/tournaments.json';
+    //console.log(url);
     httpPostAsync(url, getResponse);
-
-
 }
 
 function getResponse(responseText) {
@@ -72,14 +73,16 @@ function getResponse(responseText) {
 
 function httpPostAsync(url, callback) {
     
-    data = {"api_key": apikey, "tournament": { "name": "BC1920", "tournament_type": "swiss", "game_name": "Calculus" }};
+    let data = {"tournament": { "name": "BC1920", "tournament_type": "swiss", "game_name": "Calculus" }};
     var params = JSON.stringify(data);
     var xhr = new XMLHttpRequest();
+    
+    xhr.open("GET", url, true, username, apikey);
 
-    xhr.open("POST", url, true);
-    xhr.send(params);
+    xhr.send();
     xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 302) {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log("ready");
             callback(JSON.parse(xhr.responseText));
         }
     };
