@@ -86,5 +86,5 @@ function httpPostAsync(url, callback) {
             callback(JSON.parse(xhr.responseText));
         }
     };
-    
+
 }
